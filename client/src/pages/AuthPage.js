@@ -11,20 +11,29 @@ export const AuthPage = () => {
   });
 
   // ========= Error handler
-  useEffect( () => {
+  useEffect(() => {
     message(error);
-    clearError()
-  },  [error, message, clearError])
+    clearError();
+  }, [error, message, clearError]);
 
   // ========= Update the form
   const changeHandler = event => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
+  // ========= Sign Up handler
   const registerHandler = async () => {
     try {
       const data = await request("/api/auth/register", "POST", { ...form });
-      console.log("Data:", data);
+      message(data.message);
+    } catch (e) {}
+  };
+
+  // ========= Login handler
+  const loginHandler = async () => {
+    try {
+      const data = await request("/api/auth/login", "POST", { ...form });
+      message(data.message);
     } catch (e) {}
   };
 
@@ -66,6 +75,7 @@ export const AuthPage = () => {
               className="btn yellow darken-4"
               style={{ marginRight: 10 }}
               disabled={loading} // <======== disables the button while loading
+              onClick={loginHandler}
             >
               Login
             </button>
