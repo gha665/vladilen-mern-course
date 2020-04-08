@@ -1,5 +1,6 @@
 {
   "port": 5000,
   "jwtSecret": "gha665 youtube mern",
-  "mongoUri": "mongodb+srv://gha665:1q2w3e4r@cluster0-gy4cs.azure.mongodb.net/app?retryWrites=true&w=majority"
+  "mongoUri": "mongodb+srv://gha665:1q2w3e4r@cluster0-gy4cs.azure.mongodb.net/app?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:5000"
 }
