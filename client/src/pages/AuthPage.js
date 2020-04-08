@@ -18,6 +18,11 @@ export const AuthPage = () => {
     clearError();
   }, [error, message, clearError]);
 
+  // ========= Makes input fields active
+  useEffect(() => {
+    window.M.updateTextFields()
+  }, [])
+
   // ========= Update the form
   const changeHandler = event => {
     setForm({ ...form, [event.target.name]: event.target.value });
