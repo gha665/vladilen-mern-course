@@ -4,23 +4,19 @@ const storageName = "userData";
 
 export const useAuth = () => {
   const [token, setToken] = useState(null);
-  const [userId, setuserId] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   // ============================================================
   //     LOGIN
   // ============================================================
   const login = useCallback((jwtToken, id) => {
     setToken(jwtToken);
-    setuserId(id);
+    setUserId(id);
 
     // =========== Adds state to base browser API
-    localStorage.setItem(
-      storageName,
-      JSON.stringify({
-        userId,
-        token
-      })
-    );
+    localStorage.setItem(storageName, JSON.stringify({ 
+        userId: id, token: jwtToken
+    }));
   }, []);
 
   // ============================================================
@@ -28,7 +24,7 @@ export const useAuth = () => {
   // ============================================================
   const logout = useCallback(() => {
     setToken(null);
-    setuserId(null);
+    setUserId(null);
     localStorage.removeItem(storageName);
   }, []);
 
