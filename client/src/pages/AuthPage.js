@@ -9,7 +9,7 @@ export const AuthPage = () => {
   const { loading, request, error, clearError } = useHttp();
   const [form, setForm] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   // ========= Error handler
@@ -20,11 +20,11 @@ export const AuthPage = () => {
 
   // ========= Makes input fields active
   useEffect(() => {
-    window.M.updateTextFields()
-  }, [])
+    window.M.updateTextFields();
+  }, []);
 
   // ========= Update the form
-  const changeHandler = event => {
+  const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
@@ -52,6 +52,7 @@ export const AuthPage = () => {
         <div className="card blue darken-1">
           <div className="card-content white-text">
             <span className="card-title">Authorization</span>
+
             <div>
               <div className="input-field">
                 <input
@@ -60,6 +61,7 @@ export const AuthPage = () => {
                   type="text"
                   name="email"
                   className="yellow-input"
+                  value={form.email}
                   onChange={changeHandler} // <======= updates the form
                 />
                 <label htmlFor="email">Email</label>
@@ -72,6 +74,7 @@ export const AuthPage = () => {
                   type="password"
                   name="password"
                   className="yellow-input"
+                  value={form.password}
                   onChange={changeHandler} // <======= updates the form
                 />
                 <label htmlFor="email">Password</label>
