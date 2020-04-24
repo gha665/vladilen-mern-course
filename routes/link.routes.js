@@ -23,13 +23,15 @@ router.post("/generate", auth, async (req, res) => {
 
     // =========== create shortened link route
     const link = new Link({
-        code, to, from, owner: req.user.userId
-    })
+      code,
+      from,
+      to,
+      owner: req.user.userId,
+    });
 
     await link.save(); // <====== saves the newly created link
 
-    res.status(201).json({ link }) // <======= displays the status and the link
-
+    res.status(201).json({ link }); // <======= displays the status and the link
   } catch (e) {
     res.status(500).json({ message: "Something went wrong. Try again." });
   }
